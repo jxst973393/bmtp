@@ -1,0 +1,45 @@
+@import  "/font/iconfont.wxss" ;
+.container {
+  width: 100%;
+  background: lightblue;
+  background-size:100% 100%; 
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.btn {
+  position: absolute; 
+  top: 10%;
+  overflow: hidden;
+}
+.left-btn {
+     left: 0;
+}
+.right-btn {
+  right:0;
+}
+
+.main {
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.rank.container .btn button {
+   width:170rpx;
+height:60rpx;
+line-height:60rpx;
+color:white;
+border-radius:999rpx;
+background-color:#f48f84;
+font-size:30rpx;
+
+}
+.rank.container .left-btn{
+   left: -30rpx;
+}
+.rank.container .right-btn{
+   right: -30rpx;
+}

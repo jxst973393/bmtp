@@ -1,0 +1,43 @@
+.content.bottom {
+  bottom:0;
+}
+.content.top {
+  top:0;
+}
+.content{
+  left: 0;
+  width: 100vw;
+  position: fixed;
+  height: 7vh;
+  line-height: 7vh;
+  z-index: 2;
+  font-size: 35rpx;
+  text-align: center;
+  border-bottom:1px solid #e0e0e0;
+}
+.content .main {
+ display: inline-block;
+ width:auto;
+ word-break:keep-all;
+ white-space:nowrap;
+ height: 100%;
+ overflow: hidden;
+}
+.content .main-box {
+  position: relative;
+}
+.scroll-box {
+  position: relative;
+  width: 94%;
+  margin: 0 3%;
+}
+
+.declaration.top {
+  top:55vw;
+  margin-top: -6vh;
+  position: absolute;
+}
+.declaration {
+  height:6vh;
+  line-height: 6vh; 
+}

@@ -1,0 +1,51 @@
+<import src='../../template/template.wxml' />
+
+<view class='gray-content'>
+  <view class='slide'>
+    <swiper autoplay>
+      <block  wx:for="{{competitorList}}"  wx:for-item="competitorList" wx:key='competitorList' data-item="{{competitorList}}">
+        <swiper-item wx:for-item="{{csnr1}}"   wx:key='csnr1' data-item="{{csnr1}}" >
+          <imgBox src='{{csnr1}}'></imgBox>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <tbNotice text='这是一条拉票宣言，拉票宣言，拉票宣言' bgcolor='rgba(198,207,213,.9)' color='#407db2' mark='declaration' ></tbNotice>
+  <view class='introduction fs-medium'>
+    <view class='introduction-title'>
+    <!-- -—— 团队介绍 —— -->
+    <!-- <view src='http://dev.guotu.zsylife.cn/minidata/vote-main.jpg'>团队介绍</view> -->
+    <view >团队介绍</view>
+    </view>
+    <view class='introduction-info'>
+      <view class='introduction-info-top'>
+        <text class='name left'>{{competitorList.title}}</text> <text class='ballot right fc-red'>票{{competitorList.voteNum}}</text><text class='number right'>编号{{competitorList.id}}</text> 
+      </view>
+      <view class='introduction-info-intr fs-small' wx:for-item="{{csnr}}"   wx:key='csnr' data-item="{{csnr}}" >
+       参赛内容: {{csnr}}
+      </view>
+      <view class='vote-btn right {{competitorList.voteNum?"voted":""}}' bindtap='vote'>
+        {{!competitorList.voteNum?"给TA投票":"已投票"}}
+      </view>
+    </view>
+  </view>
+
+  <view class='message fc-black'>
+   <!--  <view class='message-top'>
+      <view class='message-btn right fs-medium' bindtap='message'>
+        <text class='icon-jiantou2 iconfont'></text>写留言
+      </view>
+    </view> -->
+     <!-- <view class='message-list'>
+    <block wx:for='{{messageData}}' wx:key='message-list'>
+      <view class='message-item'>
+        <template is = 'commentItem' data = '{{item}}'></template>
+      </view>
+    </block>
+  </view>
+  <view class='message-notice notice'>——留言已加载完毕——</view> -->
+  </view>
+  
+</view>
+<editBox id='editBox' bind:saveData = 'addMessage' placeholder='请输入你的留言'></editBox>
+<button bindtap="changeAvatar">changeAvatar</button>

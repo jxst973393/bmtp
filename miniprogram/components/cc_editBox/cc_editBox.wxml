@@ -1,0 +1,24 @@
+<!--参数：  -->
+<!--placeholder: 无输入时的填充值  -->
+<!--userInput：value值，可直接传入  -->
+<!--maxlength: 最大可输入值，不传入则默认无限制  -->
+<!--mark：标识  -->
+<!--事件saveData：当用户点击保存按钮时触发，空值时不触发。会返回mark与userInput值  -->
+
+<!--外部可使用函数：  -->
+<!--toggle()：控制输入框是否出现  -->
+<!--setValue()：动态设置userInput的值  -->
+<view class='pop-box {{isShow?"show":""}}' catchtouchmove='cancelSlide' >
+  <view  class='mask ' bindtap='toggle' >
+  </view>
+  <view class='input-box' >
+    <icon type='cancel' color='#000' bindtap='toggle'></icon>
+    <form bindsubmit='changeValue'>
+      <textarea fixed="true" name='textarea' maxlength='{{maxlength}}' placeholder='{{placeholder}}' value='{{userInput}}' type='text'></textarea>
+      <view class='btn-box'>
+        <button type='default' form-type='reset'>重置</button>
+        <button type='primary' form-type='submit'>留言</button>
+      </view>
+    </form>
+  </view>
+</view>

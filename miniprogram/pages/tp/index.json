@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "topNotice": "../../components/cc_tbNotice/cc_tbNotice",
+    "imgBox": "../../components/cc_imgBox/cc_imgBox",
+    "countDown": "../../components/cc_countDown/cc_countDown"
+  },
+      "navigationBarTitleText": "投票"
+}

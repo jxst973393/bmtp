@@ -1,0 +1,7 @@
+{
+  "usingComponents":{
+    "imgBox":"../../components/cc_imgBox/cc_imgBox",
+    "tbNotice":"../../components/cc_tbNotice/cc_tbNotice",
+    "editBox": "../../components/cc_editBox/cc_editBox"
+  }
+}

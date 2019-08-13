@@ -1,0 +1,211 @@
+/**index.wxss**/
+.pagee{
+  background: gray
+}
+.vote-top {
+  margin-top: -10px;
+  position: relative;
+  border-bottom: 1px solid #e4e4e4;
+}
+swiper {
+  height: 50vw;
+}
+swiper swiper-item {
+  width: 100%;
+  height: 50vw!important;
+}
+.info {
+  position: relative;
+  width: 94vw;
+  margin: auto;
+  box-shadow: 0 0 10px #d1d1d1;
+  background-color: white;
+  margin-top: -40rpx;
+  height: 120rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tb-inline {
+  flex-grow: 1;
+  text-align: center;
+  height: 100rpx;
+  display: flex;
+  flex-direction: column ;
+  padding: 10rpx 0;
+}
+.tb-inline text {
+  display: inline-block;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+
+.deadline {
+  padding: 40rpx 8vw;
+  width: 84vw;
+  height: 80rpx;
+  line-height: 80rpx;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background-color: #ffffff;
+}
+.deadline .clock {
+  width: 60rpx;
+  height: 60rpx;
+  display: inline-block;
+  padding: 0 5rpx;
+  margin-bottom: -15rpx;
+}
+.deadline .line {
+  width: 10vw;
+  margin: 0 1vw;
+  border-bottom: 2rpx solid #cecece; 
+  flex-grow: 1 ;
+}
+
+.introduction {
+  position: absolute;
+  bottom: 15rpx;
+  right: 15rpx;
+  border-left: 5rpx solid #ef3b4f;
+  padding-left: 25rpx;
+  font-size: 30rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+}
+
+.competitor-list {
+  margin-top: 30rpx;
+}
+.list-top {
+  position: relative;
+  background-color: white;
+  padding: 10rpx 3vw;
+  text-align: center;
+  border-bottom: 1px solid #e4e4e4;
+}
+.list-top .list-title {
+  height: 70rpx;
+  line-height: 70rpx;
+}
+.list-top .list-title image {
+  line-height: 60rpx;
+  height: 40rpx;
+  width: 40rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+.list-top.close .list-search {
+  position: absolute;
+  right: 3vw;
+  top: 10rpx;
+  text-align: right;
+}
+.list-top.close .list-search {
+  font-size: 40rpx;
+}
+.list-top.close .list-search .search-input {
+  display: none;
+}
+.list-top.open .list-title,.list-top.open .list-search .search-open {
+  display: none;
+}
+.list-top.open .list-search .search-input .input-box {
+  border-radius: 999rpx;
+  background-color: rgb(254,176,182);
+  color: rgb(255,215,217);
+  padding: 0 30rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.list-top.open .list-search .input-box input {
+  display: inline-block;
+  width: 77%;
+  height: 100%;
+  text-align: left;
+}
+.list-top.open .list-search .input-box .iconfont {
+  width: 8%;
+  text-align: left;
+}
+.list-top.open .list-search .input-box .search-cancel {
+  width: 10%;
+  padding-left: 25rpx;
+  border-left: 5rpx solid #ef3b4f;
+  margin: 15rpx 0;
+  height: 30rpx;
+  line-height: 30rpx;
+  position: absolute;
+  right: 50rpx;
+}
+.list-top.open .list-search .search-comfirm {
+  text-align: left;
+  height: 60rpx;
+  padding-left: 30rpx;
+  line-height: 60rpx;
+}
+
+.list-main {
+  overflow: hidden;
+}
+.list-item  {
+  width: 48vw;
+  background-color: white;
+  margin-bottom: 2vw;
+}
+.list-item:nth-child(n) {
+  padding: 3vw 2vw 2vw 0;
+}
+.list-item:nth-child(2n) {
+  padding: 3vw 0vw 2vw 2vw;
+}
+.list-item .img-box {
+  width: 100%;
+  height:32vw; 
+  /* border-bottom: 1px solid #e4e4e4;
+  border-left: 1px solid #e4e4e4; */
+}
+.list-item .item-info {
+  position: relative;
+  margin: 10rpx  ;
+}
+.list-item .item-info text{
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.list-item .item-info text.iconfont {
+  display: inline-block;
+  margin-right:10rpx;
+}
+.list-item .item-info .item-number  {
+  width: 15%;
+  display: inline-block;
+}
+.list-item .item-info .item-name {
+  width: 50%;
+  display: inline-block;
+}
+.list-item .item-info .item-ballot {
+  width: 35%;
+  position: absolute;
+  top: 0;
+  text-align: right;
+  right: 0;
+}
+.list-item .item-vote {
+  height: 45rpx;
+  line-height: 45rpx;
+  padding: 0 40rpx;
+  background-color: #ee6d7c;
+  border-radius: 99rpx;
+  color: white;
+  margin: 10rpx 10rpx 0 0;
+}
+.list-item .item-vote.voted {
+  background-color:rgb(102,157,203);
+}
+.phcolor {
+  color:rgb(255,215,217);
+}
+

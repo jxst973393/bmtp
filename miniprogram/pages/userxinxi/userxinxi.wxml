@@ -1,0 +1,110 @@
+<!-- <view class="navigation-bar-holder" wx:if="{{fixed && show}}" style="background:{{placeholderBg}};padding-top:{{paddingTop}}px;height:{{height}}px;line-height:{{height}}px;width:750rpx;"></view>
+ <view class="weui-search-bar">
+            <view class="weui-search-bar__form">
+                <view class="weui-search-bar__box">
+                   
+                    <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+                    <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                      
+                    </view>
+                </view>
+                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                   
+                    <view class="weui-search-bar__text">搜索</view>
+                </label>
+            </view>
+            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+        </view>
+  <view class="page " wx:if="{{inputVal.length > 0}}" >
+  <view  class="page"  wx:for="{{tx}}"  wx:for-item="tx" wx:key='tx' data-item="{{tx}}" wx:if="{{inputVal == tx.nick || inputVal == item.nickName}}" >
+  <view  ></view>
+  <view class="weui-panel weui-panel_access">
+  <view class="weui-panel__bd">
+  <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+  <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+  <image class="weui-media-box__thumb" src="{{tx.avatarUrl}}" />
+  </view>
+  <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+  
+    <view class="weui-media-box__title">姓名:{{tx.nick}}
+</view>
+           <view class='weui-media-box__desc'>城市:{{tx.city}}</view>
+  
+  </view>
+  
+  </navigator>
+  </view ></view>
+  
+  
+  </view>
+
+  </view> -->
+<import src='../../template/template.wxml' />
+
+  <view class="page " hidden="{{inputShowed}}" >
+
+<view class='slide'>
+    <swiper autoplay>
+      <block  wx:for="{{competitorList}}"  wx:for-item="competitorList" wx:key='competitorList' data-item="{{competitorList}}">
+        <swiper-item  bindtap="xgxx" wx:for-item="{{csnr1}}" wx:key='csnr1' data-item="{{csnr1}}" >
+          <imgBox src="{{csnr1}}"></imgBox>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- <tbNotice text='这是一条拉票宣言，拉票宣言，拉票宣言' bgcolor='rgba(198,207,213,.9)' color='#407db2' mark='declaration' ></tbNotice> -->
+  <view class='introduction fs-medium'>
+    <view class='introduction-title'>
+    <!-- -—— 团队介绍 —— -->
+    <!-- <view src='http://dev.guotu.zsylife.cn/minidata/vote-main.jpg'>团队介绍</view> -->
+    <view class="tex" >团队介绍</view>
+    </view>
+    <view class='introduction-info'>
+      <view class='introduction-info-top'>
+        <text class='tex'>队伍名称:{{competitorList.joinInfo.teamName}}</text> 
+      </view>
+      <view class='introduction-info weui-media-box__desc tex' >
+      
+       参赛内容: {{competitorList.extJson['参赛内容']}}
+      </view>
+      <view class='vote-btn right'  bindtap="jiaru">
+        加入团队
+      </view>
+    </view>
+  </view>
+  <view class='introduction fs-medium'>
+    <view class='introduction-title'>
+        <view class="tex">队员介绍</view>
+    </view>
+    </view>
+<view class="page"  wx:for="{{tx}}"  wx:for-item="tx" wx:key='tx' data-item="{{tx}}"  >
+
+        <view class="weui-panel weui-panel_access">
+            <view class="weui-panel__bd">
+                <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg" >
+    <image class="weui-media-box__thumb"   src="{{tx.avatarUrl}}" />
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+           <view class="weui-media-box__title">姓名:{{tx.nick}}
+</view>
+           <view class='weui-media-box__desc'>城市:{{tx.city}}</view>
+           <!-- <view class='weui-media-box__desc'>年龄:{{tx.extJson['年龄']}}</view>
+           <view class="weui-media-box__desc">队伍职务:{{tx.extJson['队伍职务']}}</view>  -->
+
+        </view>
+          <view class="buy" >
+          <view class="rating">
+
+          </view>
+          </view>
+                </navigator>
+       </view>
+        </view>
+        </view>
+        </view>
+
+
+ <!-- <image bindtap="jiaru" class="huifu" src="/images/bm.png">加入团队</image>  -->
+
+<!-- <button bindtap="xgxx">xgxx</button> -->

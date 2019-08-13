@@ -1,0 +1,4 @@
+.item text {
+  display: inline-block;
+  margin: 0 10rpx;
+}

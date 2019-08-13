@@ -1,0 +1,74 @@
+@import "../../template/template.wxss" ;
+
+.gray-content {
+  min-height: 100vh;
+  padding: 0vh 0 30rpx 0;
+}
+swiper {
+  height: 55vw;
+}
+swiper swiper-item {
+  width: 100%;
+  height: 55vw!important;
+}
+
+.introduction {
+  /* margin-top: 20rpx; */
+  background-color: white;
+  overflow: hidden;
+  border-bottom: 1px solid #e4e4e4;
+}
+.introduction-title {
+  text-align: center;
+  background-color: #80cbc7;
+  color:white;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+.introduction-title imgBox {
+  width: 100%;
+  height: 70rpx;
+}
+.introduction-info {
+  padding: 20rpx ;
+}
+.introduction-info-top {
+  overflow: hidden;
+}
+.introduction-info text {
+  padding-left: 10rpx;
+  border-left: 5rpx solid #ef3b4f;
+  font-size: 30rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  display: inline-block;
+}
+.introduction-info text.ballot {
+  margin-left: 60rpx;
+}
+.introduction-info-intr {
+  margin: 30rpx 0 20rpx 0 ;
+  color: #898989;
+  text-indent: 30rpx;
+}
+.vote-btn {
+  height: 45rpx;
+  line-height: 45rpx;
+  padding: 0 40rpx;
+  background-color: #ee6d7c;
+  border-radius: 99rpx;
+  color: white;
+  margin: 10rpx 10rpx 20rpx 0;
+}
+.vote-btn.voted {
+  background-color:rgb(102,157,203);
+}
+.message {
+  transition: 1s linear all;
+  margin: 20rpx 0 0 0;
+}
+.message-top {
+  overflow: hidden;
+  padding: 10rpx 20rpx;
+  background-color: white;
+}

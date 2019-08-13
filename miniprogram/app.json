@@ -1,0 +1,78 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/registration/registration",
+    "pages/Applicants/Applicants",
+    "pages/userxinxi/userxinxi",
+    "pages/csqy/csqy",
+    "pages/zyjz/zyjz",
+    "pages/authorize/index",
+    "pages/my/my",
+    "pages/sign/index",
+    "pages/sc/index",
+    "pages/shop-cart/index",
+    "pages/goods-details/index",
+    "pages/goods-details/poster",
+    "pages/userbm/userbm",
+    "pages/tp/index",
+    "pages/main/main",
+    "pages/to-pay-order/index",
+    "pages/order-list/index",
+    "pages/select-address/index",
+    "pages/address-add/index",
+    "pages/xgxx/xgxx"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "爱健康",
+    "navigationBarTextStyle": "black",
+    "onReachBottomDistance": 50,
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#6e6d6b",
+    "selectedColor": "#e64340",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/nav/home-off.png",
+        "selectedIconPath": "images/nav/home-on.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/tp/index",
+        "iconPath": "images/2.png",
+        "selectedIconPath": "images/22.png",
+        "text": "投票"
+      },
+      {
+        "pagePath": "pages/sc/index",
+        "iconPath": "images/nav/menu-off.png",
+        "selectedIconPath": "images/nav/menu-on.png",
+        "text": "商城"
+      },
+      {
+        "pagePath": "pages/shop-cart/index",
+        "iconPath": "images/nav/cart-off.png",
+        "selectedIconPath": "images/nav/cart-on.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "images/nav/my-off.png",
+        "selectedIconPath": "images/nav/my-on.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "plugins": {
+    "tencentvideo": {
+      "version": "1.3.6",
+      "provider": "wxa75efa648b60994b"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

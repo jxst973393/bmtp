@@ -1,0 +1,73 @@
+.mask {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 22;
+  top: 0;
+  left: 0;
+  background-color: rgba(10, 10, 10, 0.5);
+  display: none;
+}
+
+.input-box {
+  position: fixed;
+  width: 400rpx;
+  height: 400rpx;
+  padding: 20rpx;
+  z-index: 22;
+  left: 50%;
+  top: 50%;
+  background-color: #eee;
+  border-radius: 20rpx;
+  opacity: 0;
+  transition: all 0.4s ease;
+   transform: translate3d(-50%, -50%, 0);
+}
+
+.input-box textarea {
+  width: 96%;
+  height: 270rpx;
+  margin: 2%;
+  background-color: #fff;
+  display: none;
+}
+
+.input-box icon {
+  float: right;
+}
+
+.input-box .btn-box {
+  width: 100%;
+  text-align: center;
+  height: 60rpx;
+  position: absolute;
+  bottom: 20rpx;
+  left: 0;
+}
+
+.input-box .btn-box button {
+  width: 40%;
+  display: inline-block;
+  height: 60rpx;
+  border-radius: 0;
+  margin: 0 5%;
+  line-height: 60rpx;
+}
+.pop-box {
+  visibility: hidden;
+}
+.pop-box.show {
+   visibility: visible;
+}
+.show .mask {
+  display: block;
+}
+
+.show .input-box {
+ 
+  opacity: 1;
+}
+
+.show .input-box textarea {
+  display: inline-block;
+}

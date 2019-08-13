@@ -1,0 +1,130 @@
+<!-- index.wxml -->  
+<form bindsubmit="showTopTips" report-submit="true">
+
+
+  <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+     
+    <view class="page__bd">
+      <view class="weui-cells__title">请填写详细信息 信息不全或有误将作废</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">姓名</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" type="text" placeholder="请输入姓名" name="name" />
+          </view>
+        </view>
+
+        <view class="weui-cell weui-cell_input weui-cell_vcode">
+          <view class="weui-cell__hd">
+            <view class="weui-label">性别</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入性别" name="gender" />
+          </view>
+        </view>
+
+        <view class="weui-cell weui-cell_input weui-cell_vcode">
+          <view class="weui-cell__hd">
+            <view class="weui-label">年龄</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入年龄" name="age" />
+          </view>
+        </view>
+
+         <view class="weui-cell weui-cell_input weui-cell_vcode">
+          <view class="weui-cell__hd">
+            <view class="weui-label">参赛内容</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="才艺类/我为中医代言" name="nr" />
+          </view>
+        </view>
+
+        <!-- <view class="weui-cell weui-cell_input weui-cell_vcode">
+          <view class="weui-cell__hd">
+            <view class="weui-label">队伍名称</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入队伍名称" name="dw" />
+          </view>
+        </view> -->
+
+         <view class="weui-cell weui-cell_input weui-cell_vcode">
+          <view class="weui-cell__hd">
+            <view class="weui-label">队伍职务</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入所在队伍职务" name="dwzw" />
+          </view>
+        </view>
+
+
+        <!-- <view class="weui-cell weui-cell_input weui-cell_vcode">
+          <view class="weui-cell__hd">
+            <view class="weui-label">队伍人数</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入队伍人数" name="dwrs" />
+          </view>
+        </view> -->
+
+        <!-- <view class="weui-cell weui-cell_input weui-cell_vcode">
+          <view class="weui-cell__hd" >
+            <view class="weui-label">联系方式</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入联系方式" name="phone" />
+          </view>
+        </view> -->
+
+         <!-- <view class="weui-cell weui-cell_input weui-cell_vcode">
+          <view class="weui-cell__hd">
+            <view class="weui-label">队伍所在地区</view>
+          </view>
+ 
+  <picker mode="region"bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+    <view class="picker">
+      {{region[0]}}，{{region[1]}}，{{region[2]}}
+    </view>
+  </picker>
+</view> -->
+          <!-- <view style="height:20rpx;background: #eee;width:100%;"></view>
+  <view wx:if="{{!userMobile}}" class="bind-phone-number">
+    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">绑定手机号码</button>
+  </view> -->
+  
+        
+
+      </view>
+
+
+
+
+      <!-- <view class="weui-cells__title">队伍简介/个人简介</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <textarea class="weui-textarea" placeholder="请输队伍简介" style="height: 3.3em" name="requirements" />
+            <view class="weui-textarea-counter">0/200</view>
+          </view>
+        </view>
+      </view> -->
+      <view class="weui-cells__tips">请务必确保信息真实有效，不绑定手机号将无法获取报名资格</view>
+
+
+ <button class="weui-btn"  type="primary" formType="submit">确定</button>
+
+
+      <!-- <view class="weui-btn-area">
+         <button wx:if="{{logged == false}}" disabled='true' class="weui-btn"  type="primary" >授权后才能报名</button>
+
+      <button wx:elif="{{logged == true}}" class="weui-btn"  type="primary" formType="submit">确定</button>
+      </view> -->
+    </view>
+  </view>
+</form>
+
+ 

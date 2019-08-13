@@ -1,0 +1,154 @@
+<!--index.wxml-->
+<!-- <view class="container"> -->
+
+<!-- 用户 openid -->
+<!-- <view class="userinfo">
+    <button 
+      open-type="getUserInfo" 
+      bindgetuserinfo="onGetUserInfo"
+      class="userinfo-avatar"
+      style="background-image: url({{avatarUrl}})"
+    ></button>
+    <view>
+      <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取 openid</button>
+    </view>
+  </view>
+</view>  -->
+<view class="page">
+  <swiper class="swiper page-section-spacing" indicator-dots="{{indicatorDots}}" autoplay="true" indicator-active-color="white">
+    <block wx:for="{{imgUrls}}" wx:key="*this">
+      <swiper-item>
+        <!-- <view class="swiper-item {{item}}"></view> -->
+        <image src="{{item}}" class="swiper-item" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 
+
+  <view class="page__bd">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell" bindtap='registration'>
+        <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+          <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563091952&di=a5afc1353f98357dc7a5be602ece74fe&imgtype=jpg&er=1&src=http%3A%2F%2Fen.pimg.jp%2F032%2F480%2F231%2F1%2F32480231.jpg" style="width: 50px; height: 50px; display: block" />
+        </view>
+        <view class="weui-cell__bd">
+          <view>参赛队伍</view>
+          <view style="font-size: 13px;color: #888888;">参赛队伍信息</view>
+        </view>
+      </view>
+    </view> -->
+
+
+  <!-- </view> -->
+
+  <!-- <view class="page__bd page__bd_spacing">
+    <view class="kind-list">
+        <view class="kind-list__item">
+          <view   class="weui-flex kind-list__item-hd " bindtap="kindToggle">
+            <view class="weui-flex__item">参赛队伍</view>
+            <image class="kind-list__img" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563091952&di=a5afc1353f98357dc7a5be602ece74fe&imgtype=jpg&er=1&src=http%3A%2F%2Fen.pimg.jp%2F032%2F480%2F231%2F1%2F32480231.jpg"></image>
+          </view>
+          <view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
+            <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}">
+                <navigator url="" class="weui-cell weui-cell_access">
+                  <view class="weui-cell__bd">123</view>
+                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                </navigator>
+            </view>
+          </view>
+        </view>
+    </view>
+  </view>
+  
+  
+  <view class="page__ft">
+    <image src="images/icon_footer.png" style="width: 84px; height: 19px;"></image>
+  </view> -->
+</view>
+
+
+<view class="page">
+
+  <view class="page__bd page__bd_spacing">
+    <view class="kind-list">
+      <view class="kind-list__item" bindtap='registration'>
+        <view class="weui-flex kind-list__item-hd" bindtap="kindToggle">
+          <!-- <view class="weui-flex__item">队伍风采</view> -->
+          <view class="weui-flex__item">参赛队伍</view>
+          <image class="kind-list__img" src="../images/team.png"></image>
+        </view>
+
+        <view class="kind-list__item-bd">
+          <view class="weui-cells">
+
+          </view>
+        </view>
+      </view>
+
+      <view class="kind-list__item" bindtap='Applicants'>
+        <view class="weui-flex kind-list__item-hd" bindtap="kindToggle">
+          <view class="weui-flex__item">创建队伍</view>
+          <image class="kind-list__img" src="../images/bm.png"></image>
+        </view>
+
+        <view class="kind-list__item-bd">
+          <view class="weui-cells">
+
+          </view>
+        </view>
+      </view>
+
+<!-- 
+      <view class="kind-list__item" bindtap='csqy'>
+        <view class="weui-flex kind-list__item-hd" bindtap="kindToggle">
+          <view class="weui-flex__item">参赛详情</view>
+          <image class="kind-list__img" src="../images/csqy.png"></image>
+        </view>
+
+        <view class="kind-list__item-bd">
+          <view class="weui-cells">
+
+          </view>
+        </view>
+      </view> -->
+
+
+      <view class="kind-list__item" bindtap='yzjz'>
+        <view class="weui-flex kind-list__item-hd" bindtap="zyjz">
+          <view class="weui-flex__item">中医讲座</view>
+          <image class="kind-list__img" src="../images/zyjz.png"></image>
+        </view>
+
+        <view class="kind-list__item-bd">
+          <view class="weui-cells">
+
+          </view>
+        </view>
+      </view>
+
+
+
+    </view>
+  </view>
+
+
+<!-- 
+  <view class="page-body">
+    <view class="swiper page-section-spacing">
+          <txv-video vid="y01449j3lva"   playerid="txv1" width="100%"  >
+                  <view class='txv-video-slot'>video slot</view>
+      </txv-video>
+
+
+    </view>
+  </view> -->
+
+
+</view>
+
+
+      <!-- <video id="myVideo" class='vido'   controls='{{true}}' src='{{url}}' binderror="videoErrorCallback" binderror="videoErrorCallback" danmu-list="{{danmuList}}" enable-danmu danmu-btn  ></video> -->
+      <!-- <txv-video id="myVideo" class='vido' vid="y01449j3lva" playerid="txv1"></txv-video> -->
+
+      
+  

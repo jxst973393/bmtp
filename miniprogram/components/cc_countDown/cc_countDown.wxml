@@ -1,0 +1,15 @@
+<!-- <text wx:if="{{!isEnd}}">
+
+ <text wx:if="{{isEnd}}">
+  {{endText}}
+</text>  -->
+ <!-- <text wx:if="{{isEnd}}">
+  {{endText}}
+</text>  -->
+<text class='item' style='display:{{isEnd?"none":"inline-block"}}'>
+<text>{{time.h < 10 ? "0" +time.h :time.h}}:</text>
+<text>{{time.m < 10 ? "0" +time.m :time.m}}:</text>
+<text>{{time.s < 10 ? "0" +time.s :time.s}}</text>
+</text> 
+{{isEnd?endText:''}}
+
