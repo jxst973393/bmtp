@@ -17,9 +17,9 @@
     <!-- <view src='http://dev.guotu.zsylife.cn/minidata/vote-main.jpg'>团队介绍</view> -->
     <view >团队介绍</view>
     </view>
-    <view class='introduction-info'>
+    <view class='introduction-info'  wx:for-item="{{csnrr}}"  wx:for-item="csnrr" wx:key='csnrr'>
       <view class='introduction-info-top'>
-        <text class='name left'>{{competitorList.title}}</text> <text class='ballot right fc-red'>票{{competitorList.voteNum}}</text><text class='number right'>编号{{competitorList.id}}</text> 
+        <text class='name left'>{{competitorList.title}}</text> <text class='ballot right fc-red'>票{{competitorList.voteNum}}</text><text class='number right'>编号{{csnrr}}</text> 
       </view>
       <view class='introduction-info-intr fs-small' wx:for-item="{{csnr}}"   wx:key='csnr' data-item="{{csnr}}" >
        参赛内容: {{csnr}}
@@ -29,6 +29,37 @@
       </view>
     </view>
   </view>
+
+  <view class='introduction fs-medium'>
+    <view class='introduction-title'>
+        <view class="tex">队员介绍</view>
+    </view>
+    </view>
+<view class="page"  wx:for="{{tx}}"  wx:for-item="tx" wx:key='tx' data-item="{{tx}}"  >
+
+        <view class="weui-panel weui-panel_access">
+            <view class="weui-panel__bd">
+                <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg" >
+    <image class="weui-media-box__thumb"   src="{{tx.avatarUrl}}" />
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+           <view class="weui-media-box__title">姓名:{{tx.nick}}
+</view>
+           <view class='weui-media-box__desc'>城市:{{tx.city}}</view>
+           <!-- <view class='weui-media-box__desc'>年龄:{{tx.extJson['年龄']}}</view>
+           <view class="weui-media-box__desc">队伍职务:{{tx.extJson['队伍职务']}}</view>  -->
+
+        </view>
+          <view class="buy" >
+          <view class="rating">
+
+          </view>
+          </view>
+                </navigator>
+       </view>
+        </view>
+        </view>
 
   <view class='message fc-black'>
    <!--  <view class='message-top'>
@@ -47,5 +78,6 @@
   </view>
   
 </view>
-<editBox id='editBox' bind:saveData = 'addMessage' placeholder='请输入你的留言'></editBox>
-<button bindtap="changeAvatar">changeAvatar</button>
+<!-- <editBox id='editBox' bind:saveData = 'addMessage' placeholder='请输入你的留言'></editBox> -->
+<!-- <button bindtap="changeAvatar">changeAvatar</button> -->
+

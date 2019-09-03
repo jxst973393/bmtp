@@ -98,10 +98,10 @@
         </view>
       </view>
 
-<!-- 
+
       <view class="kind-list__item" bindtap='csqy'>
         <view class="weui-flex kind-list__item-hd" bindtap="kindToggle">
-          <view class="weui-flex__item">参赛详情</view>
+          <view class="weui-flex__item">活动详情</view>
           <image class="kind-list__img" src="../images/csqy.png"></image>
         </view>
 
@@ -110,7 +110,7 @@
 
           </view>
         </view>
-      </view> -->
+      </view>
 
 
       <view class="kind-list__item" bindtap='yzjz'>
@@ -147,8 +147,5 @@
 </view>
 
 
-      <!-- <video id="myVideo" class='vido'   controls='{{true}}' src='{{url}}' binderror="videoErrorCallback" binderror="videoErrorCallback" danmu-list="{{danmuList}}" enable-danmu danmu-btn  ></video> -->
-      <!-- <txv-video id="myVideo" class='vido' vid="y01449j3lva" playerid="txv1"></txv-video> -->
-
-      
+   
   

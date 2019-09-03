@@ -1,4 +1,8 @@
-// pages/csqy/csqy.js
+const WXAPI = require('../../wxapi/main')
+const CONFIG = require('../../config.js')
+const regeneratorRuntime = require('../../utils/runtime')
+const app = getApp()
+
 Page({
 
   /**
@@ -14,7 +18,32 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.cmsxq();
+  },
 
+  cmsxq:function (e) {
+    var that = this
+    WXAPI.cmsxq({
+      id: 15313
+    }).then(function (res) {
+      let richText = res.data.content;
+      /* 去除富文本中的html标签 */
+      /* *、+限定符都是贪婪的，因为它们会尽可能多的匹配文字，只有在它们的后面加上一个?就可以实现非贪婪或最小匹配。*/
+      let content = richText.replace(/<.+?>/g, '');
+      console.log(content);
+      /* 去除  */
+      content = content.replace(/ /ig, '');
+      console.log(content);
+      /* 去除空格 */
+      content = content.replace(/\s/ig, '');
+      console.log(content);
+      that.setData({
+        cmsxq: res.data,
+        richText: content
+      })
+      
+      console.log(res.data, 'res')
+    })
   },
 
   bsxq:function (e) {
@@ -29,7 +58,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**

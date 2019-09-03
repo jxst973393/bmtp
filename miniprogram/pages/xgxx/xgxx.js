@@ -10,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    
     multiIndex: [0, 0, 0],
     date: '2016-09-01',
     time: '12:01',
@@ -64,6 +64,28 @@ Page({
   //     }
   //   })
   // },
+  uploadFileFromUrl() {
+    if (!this.data.url) {
+      wx.showToast({
+        title: '地址不能空',
+        icon: 'none'
+      })
+      return
+    }
+    WXAPI.uploadFileFromUrl(this.data.url, '.png').then(res => {
+      console.log(res)
+      this.setData({
+        url: null
+      })
+      this.uploadFileList()
+    })
+  },
+  previewImage: function (e) {
+    wx.previewImage({
+      current: e.currentTarget.id, // 当前显示图片的http链接
+      urls: this.data.files // 需要预览的图片http链接列表
+    })
+  },
 
   bindRegionChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -185,66 +207,41 @@ Page({
     //   }
     // })
   },
-  xgtx: function (e) {
-    var that = this
-    wx.chooseImage({
-      count: 1,// 默认9
-      sizeType: ['original', 'compressed'],// 可以指定是原图还是压缩图，默认二者都有
-      sourceType: ['album', 'camera'],// 可以指定来源是相册还是相机，默认二者都有
-      success: function (res) {
-        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        var tempFilePaths = res.tempFilePaths;
-        console.log(tempFilePaths, 'tempFilePaths')
-        that.setData({
-          tempFilePaths: tempFilePaths
+  uploadFileList() {
+    wx.showLoading({
+      title: '加载中',
+    })
+    WXAPI.uploadFileList().then(res => {
+      wx.hideLoading()
+      console.log(res)
+      if (res.code == 0) {
+        this.setData({
+          piclists: res.data
         })
-        //这里是上传操作
-        // wx.uploadFile({
-        //   url: getApp().globalData.clientUrl + '/uploadAvatarUrl', //里面填写你的上传图片服务器API接口的路径 
-        //   filePath: tempFilePaths[0],//要上传文件资源的路径 String类型 
-        //   name: 'avatar',//按个人情况修改，文件对应的 key,开发者在服务器端通过这个 key 可以获取到文件二进制内容，(后台接口规定的关于图片的请求参数)
-        //   header: {
-        //     "Content-Type": "multipart/form-data"//记得设置
-        //   },
-        //   formData: {
-        //     //和服务器约定的token, 一般也可以放在header中
-        //     'session_token': wx.getStorageSync('session_token')
-        //   },
-        //   success: function (res) {
-        //     //当调用uploadFile成功之后，再次调用后台修改的操作，这样才真正做了修改头像
-        //     if (res.statusCode = 200) {
-        //       // var data = res.data
-        //       // var statusCode = res.statusCode
-        //       // console.log("返回值1" + data);
-        //       // console.log("返回值2" + statusCode)
-        //       //这里调用后台的修改操作， tempFilePaths[0],是上面uploadFile上传成功，然后赋值到修改这里。
-        //       wx.request({
-        //         url: getApp().globalData.clientUrl + '/update?avatar=' + tempFilePaths[0], //真正修改操作,填写你们修改的API
-        //         header: {
-        //           'content-type': 'application/json',
-        //         },
-        //         method: 'POST',
-        //         success: function (res) {
-        //           if (res.data.code == 200) {
-        //             wx.showToast({
-        //               title: '修改成功',
-        //               icon: 'success',
-        //               duration: 2500
-        //             })
-
-        //             //wx.uploadFile自已有一个this，我们刚才上面定义的var _this = this 把this带进来
-        //             _this.setData({
-        //               "user.avatar": tempFilePaths[0]
-        //             });
-        //           }
-        //         },
-        //       })
-        //     }
-        //   }
-        // })
       }
     })
   },
+  xgtx: function (e) {
+    const token = wx.getStorageSync('token');
+    const _this = this;
+    wx.chooseImage({
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      count: 1, // 最多选择几张图片
+      success: function (res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        console.log(res)
+        WXAPI.uploadFile(token, res.tempFilePaths[0]).then(_res => {
+          console.log(_res.data.url, 'hero')
+          _this.setData({
+            tempFilePaths: _res.data.url
+          })
+          _this.uploadFileList()
+        })
+      }
+    })
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

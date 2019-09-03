@@ -16,7 +16,7 @@
             <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
         </view>
   <view class="page " wx:if="{{inputVal.length > 0}}" >
-  <view  class="page"  wx:for="{{tx}}" wx:for-item="tx" wx:key='tx' data-item="{{tx}}" wx:if="{{inputVal == tx.teamName}}" bindtap='xinxi'>
+  <view  class="page"  wx:for="{{tx}}" wx:for-item="tx" wx:key='tx' data-item="{{tx}}" wx:if="{{inputVal == tx.teamName || inputVal == tx.extJson['序号'] }}" bindtap='xinxi'>
   <view  ></view>
   <view class="weui-panel weui-panel_access">
   <view class="weui-panel__bd">
@@ -57,5 +57,11 @@
     </view>
 
   </view>
+      <!-- <view class='list-notice notice' wx:if="{{ p < totalpage }}" >——下拉显示更多——</view>
+      <view class='list-notice notice' wx:else="{{ p >= totalpage }}" >——所有团队已显示完毕——</view> -->
+<!-- <view wx:if="{{ p < totalpage  }}" class='list-notice notice' >{{ p >= totalpage? '下拉显示更多':'所有团队已显示完毕'}}</view>  -->
+<view class='list-notice notice' wx:hidden="{{p < totalpage}}" >{{ p < totalpage? '——下拉显示更多——':'——所有团队已显示完毕——'}}</view>
+
+
 </view>
 

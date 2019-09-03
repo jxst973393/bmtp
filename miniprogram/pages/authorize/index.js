@@ -137,7 +137,7 @@ Page({
               referrer = referrer_storge;
             }
             // 下面开始调用注册接口
-            WXAPI.register({
+            WXAPI.register_complex({
               code: code,
               encryptedData: encryptedData,
               iv: iv,

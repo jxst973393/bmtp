@@ -1,12 +1,17 @@
 /**index.wxss**/
 
-page {
+/* page {
   background: #f6f6f6;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+} */
+page{
+    background-color: #FFFFFF;
 }
-
+image{
+    margin: 4px 0;
+}
 .userinfo, .uploader, .tunnel {
   margin-top: 40rpx;
   height: 140rpx;

@@ -10,6 +10,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    p: 1,    //分页请求
+    totalpage: null,    //总页数
+    isloading: true,    //是否显示加载动画
+    tx: [],    //数据
     inputShowed: false,
     showHomeButton: false,//是否显示返回首页
     show: true,//是否显示导航
@@ -18,8 +22,8 @@ Page({
     toggleBarShow: false,
   },
 
-  xinxi:function (e) {
-    console.log(e.currentTarget.dataset.item.id,'e')
+  xinxi: function (e) {
+    console.log(e.currentTarget.dataset.item.id, 'e')
     getApp().globalData.param = e.currentTarget.dataset.item.id
     wx.navigateTo({
       url: '../userxinxi/userxinxi',
@@ -31,13 +35,13 @@ Page({
    */
   onLoad: function (options) {
 
-  
+
     // this.success();
     var self = this;
     this.xk();
     this.cq();
     console.log(wx.getStorageSync('token'))
-    
+
     // WXAPI.yuyueid({
     //   token: wx.getStorageSync('token')
     // }).then(res  => {
@@ -57,10 +61,10 @@ Page({
     //     console.log(res.data, 'res')
     //   })
     // })
-  
+
   },
 
-  cq:function(e) {
+  cq: function (e) {
     // WXAPI.yuyuedw().then(res => {
     //   if (res.code === 0) {
     //     this.setData({
@@ -70,7 +74,7 @@ Page({
     //   }
     //   console.log(this.data.baoming.extJo, 'goodsRecommend')
     // })
-    console.log(this.data.id,'id')
+    console.log(this.data.id, 'id')
     // WXAPI.yuyuexq({
     //   joinId:this.data.id,
     //   token: wx.getStorageSync('token')
@@ -131,17 +135,31 @@ Page({
     //     // 加载完成
     //   }
     // })
+    console.log(this.data.p, 'this[')
     const that = this
     WXAPI.yuyueteam({
-      yuyueId:174,
-      pageSize:300
+      yuyueId: 174,
+      pageSize: 10,
+      page: this.data.p
       // yuyueId: 175
-    }).then(function(res){
-      console.log(res.data,'re')
+    }).then(function (res) {
+      console.log(res.data, 're')
+      // that.setData({
+      //   tx: res.data.result,
+      // })
+
+      var newsArr = that.data.tx;
+      for (var i = 0; i < res.data.result.length; i++) {
+        newsArr.push(res.data.result[i])
+      }
       that.setData({
-        tx: res.data.result,
+        tx: newsArr,
+        isloading: true,
+        totalpage: res.data.totalPage
       })
-      console.log(res.data.result,'results')
+
+
+      // console.log(res.data.result,'results')
       // var i = 0 
       // for (i in res.data.userMap){
       //   console.log(i,'i')
@@ -149,7 +167,7 @@ Page({
       //     tx: res.data.result,
       //   })
       // }
-     
+
     })
     // WXAPI.yuyueteam({
     //   yuyueId: 151
@@ -195,7 +213,7 @@ Page({
     this.setData({
       xtoken: data,
     })
-    console.log(this.data.xtoken.data,'xt')
+    console.log(this.data.xtoken.data, 'xt')
     wx.request({
       url: 'https://user.api.it120.cc/user/yuyueJoin/list',
       method: 'post',
@@ -209,21 +227,21 @@ Page({
         WXAPI.userDetail(wx.getStorageSync('token')).then(function (res) {
           if (res.code == 0) {
             let _data = {}
-            _data.apiUserInfoMap = res.data            
+            _data.apiUserInfoMap = res.data
           }
         })
         for (i in request.data.data.userMap) {
-          console.log(i,'i')
+          console.log(i, 'i')
           this.setData({
             tx: request.data.data.userMap,
             // txid: request.data.data.result
           })
-    
-          console.log(request.data.data.userMap,'txid')
+
+          console.log(request.data.data.userMap, 'txid')
           // let data = this.data.txid
           //   this.success1(data)
-        
-          
+
+
           // console.log(request.data.data,'baom')
         }
         // for (b in request.data.data.result){
@@ -270,9 +288,9 @@ Page({
     })
     console.log(this.data.txid, 'xt1')
 
-    var i = 0 
+    var i = 0
     for (i in this.data.txid) {
-      console.log(this.data.txid[i].id,'io')
+      console.log(this.data.txid[i].id, 'io')
       wx.request({
         url: 'https://user.api.it120.cc/user/yuyueJoin/info',
         method: 'get',
@@ -287,7 +305,7 @@ Page({
           // var self = this;
 
           // var promise1 = request;
-          
+
 
           // Promise.all([promise1]).then(function (values) {
           //   console.log(values['0'].data.data.extJson,'values');
@@ -297,7 +315,7 @@ Page({
           //   })
           // });
           var i = {}
-              // console.log(request,'iqoo')
+          // console.log(request,'iqoo')
           // this.setData({
           //     tp: request.data.data.extJson,
           //   })
@@ -310,7 +328,7 @@ Page({
           //   this.setData({
           //     tp: request[i].data.extJson,
           //   })
-            // console.log(this.data.tp, 'request.datad5')
+          // console.log(this.data.tp, 'request.datad5')
 
           // }
 
@@ -325,13 +343,13 @@ Page({
         },
         complete(aaa) {
           // 加载完成
-         
+
 
           // var that = this
           //  that.setData({
           //   tp: aaa.data.data.extJson,
           // })
-          console.log(aaa,'aaa')
+          console.log(aaa, 'aaa')
         }
       })
 
@@ -373,7 +391,7 @@ Page({
     //   })
     // console.log(this.data.txid.id,'iqoo')
     // var ccc = this.data.txid.id
-  
+
     //   return new Promise((resolve, reject) => {
     //     wx.request({
     //   url: 'https://user.api.it120.cc/user/yuyueJoin/info',
@@ -401,7 +419,7 @@ Page({
     //   }
     // })
     //   })
-    
+
   },
 
   /**
@@ -436,22 +454,46 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.xk();
-    this.cq();
-    wx.showLoading({
-      title: "刷新中",
-    })
+    wx.showNavigationBarLoading();    //在当前页面显示导航条加载动画
+    this.onLoad();    //刷新页面
     setTimeout(function () {
-      wx.hideLoading()
-    }, 1000)
-    wx.stopPullDownRefresh();
+      wx.hideNavigationBarLoading();    //在当前页面隐藏导航条加载动画
+      wx.stopPullDownRefresh();    //停止下拉动作
+    }, 2000)
   },
-
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    wx.showLoading({
+      title: '正在加载',
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 2000)
 
+    var p = this.data.p;
+    console.log(this.data.totalpage, 'totalpage')
+    var totalpage = this.data.totalpage + 1;
+    p++;
+    if (p > totalpage) {
+      // return;
+      wx.showLoading({
+        title: '加载完毕',
+      })
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 2000)
+      return;
+    }
+    this.setData({
+      isloading: true,
+      p: p,
+      totalpage: totalpage
+    })
+    this.xk();
+    console.log(this.data.p, 'thisp')
+    
   },
 
   /**

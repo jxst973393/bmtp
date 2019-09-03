@@ -1,7 +1,7 @@
 // 小程序开发api接口工具包，https://github.com/gooking/wxapi
 const CONFIG = require('./config.js')
 const API_BASE_URL = 'https://api.it120.cc'
-
+var subDomain = 'tz';
 
 const request = (url, needSubDomain, method, data) => {
   let _url = API_BASE_URL + (needSubDomain ? '/' + CONFIG.subDomain : '') + url
@@ -152,6 +152,9 @@ module.exports = {
   register: (data) => {
     return request('/user/wxapp/register/complex', true, 'post', data)
   },
+  register_complex: function register_complex(data) {
+    return request('/user/wxapp/register/complex', true, 'post', data);
+  },
   banners: (data) => {
     return request('/banner/list', true, 'get', data)
   },
@@ -299,6 +302,39 @@ module.exports = {
       money,
       token
     })
+  }, 
+  uploadFile: function uploadFile(token, tempFilePath) {
+    var uploadUrl = API_BASE_URL + '/' + subDomain + '/dfs/upload/file';
+    return new Promise(function (resolve, reject) {
+      wx.uploadFile({
+        url: uploadUrl,
+        filePath: tempFilePath,
+        name: 'upfile',
+        formData: {
+          'token': token
+        },
+        success: function success(res) {
+          resolve(JSON.parse(res.data));
+        },
+        fail: function fail(error) {
+          reject(error);
+        },
+        complete: function complete(aaa) {
+          // 加载完成
+        }
+      });
+    });
+  },
+  uploadFileFromUrl: function uploadFileFromUrl() {
+    var remoteFileUrl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    var ext = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+    return request('/dfs/upload/url', true, 'post', { remoteFileUrl: remoteFileUrl, ext: ext });
+  },
+  uploadFileList: function uploadFileList() {
+    var path = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+    return request('/dfs/upload/list', true, 'post', { path: path });
   },
   province: () => {
     return request('/common/region/v2/province', false, 'get')
@@ -379,5 +415,11 @@ module.exports = {
   },
   dwxg:(data) => {
     return request('/yuyue/join/update' ,true ,'post',data)
+  },
+  image:(data) => {
+    return request('/dfs/upload/file',true,'post,data')
+  },
+  cmsxq:(id) => {
+    return request('/cms/news/detail', true, 'get', id)
   }
 }

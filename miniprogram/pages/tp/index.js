@@ -8,6 +8,10 @@ Page({
     isSearch: false,
     searchVal: '',
     slideData:'',
+    p: 1,    //分页请求
+    totalpage: null,    //总页数
+    isloading: true,    //是否显示加载动画
+    csnrr: [],    //数据
     // competitorList: [{
     //   "number": "001",
     //   name: '就看大家了',
@@ -45,64 +49,194 @@ Page({
     }
   },
   onLoad() {
+    this.xk();
     // wx.setNavigationBarColor({
     //   frontColor: '#ffffff',
     //   backgroundColor: '#757575',
     // });
-    const that = this
+    // const that = this
 
-    WXAPI.tpxq({
-      id:9
-    }).then(function(res){
-      console.log(res,'res')
-      that.setData({
-        competitorList:res.data.voteItems
-      })
-    })
-    WXAPI.tpjl({
-      voteId:10,
-      token: wx.getStorageSync('token')
-    }).then(function(res){
-      console.log(res.data,'tpjl')
-    })
-    WXAPI.tpcs({
-      voteId:10
-    }).then(function(res){
-      console.log(res.data.result.length,'recs')
-      that.setData({
-        slideData: res.data
-      })
-      console.log(slideData,'slideData')
-    })
+    // WXAPI.tpxq({
+    //   id:13
+    // }).then(function(res){
+    //   console.log(res,'res1')
+    //   that.setData({
+    //     competitorList:res.data.voteItems
+    //   })
+    // })
+    // WXAPI.tpjl({
+    //   voteId: 13,
+    //   token: wx.getStorageSync('token')
+    // }).then(function(res){
+    //   console.log(res.data,'tpjl')
+    // })
+    // WXAPI.tpcs({
+    //   voteId:13
+    // }).then(function(res){
+    //   console.log(res.data,'recs')
+    //   if (res.code === 700) {
+    //     slideData:200
+    //   }else{
+    //     that.setData({
+    //       slideData: res.data.result.length
+    //     })
+    //   }
+      
+    //   console.log(that.data.slideData,'slideData')
+    // })
+    // WXAPI.yuyueteam({
+    //   yuyueId: 174,
+    //   // pageSize:300
+    //   pageSize: 10,
+    //   page: this.data.p
+    // }).then(function (res) {
+
+    //   var newsArr = that.data.csnrr;
+    //   for (var i = 0; i < res.data.result.length; i++) {
+    //     newsArr.push(res.data.result[i])
+    //     console.log(res.data.result[i], 'i')
+    //   }
+    //   that.setData({
+    //     csnrr: newsArr,
+    //     isloading: true,
+    //     totalpage: res.data.totalPage
+    //   })
+    //   // var i = 0
+    //   // for (i in res.data.result) {
+    //   //   console.log(res.data.result[i].extJson['头像'], 'title')
+    //   //   if (res.data.result[i].teamName === that.data.competitorList[i].title) {
+
+    //   //     var newsArr = that.data.csnrr;
+    //   //     for (var i = 0; i < res.data.result.length; i++) {
+    //   //       newsArr.push(res.data.result[i])
+    //   //       console.log(res.data.result[i],)
+    //   //     }
+    //   //     that.setData({
+    //   //       csnrr: newsArr,
+    //   //       isloading: true,
+    //   //       totalpage: res.data.totalPage
+    //   //     })
+    //   //     // that.setData({
+    //   //     //   csnr: res.data.result[i].extJson['参赛内容'],
+    //   //     //   csnr1: res.data.result[i].extJson['头像'],
+    //   //     //   csnrr:res.data.result
+    //   //     // })
+    //   //   }
+    //   // }
+    //   console.log(res.data.result, 'yuyueId')
+    // })
   },
-  onReady() {
+  xk:function (e) {
     const that = this
 
     WXAPI.tpxq({
-      id: 10
+      id: 13
     }).then(function (res) {
-      console.log(res.data, 'res')
+      console.log(res, 'res1')
       that.setData({
         competitorList: res.data.voteItems
       })
     })
-    // console.log(that.data.competitorList,'voteItems')
-    WXAPI.yuyueteam({
-      yuyueId: 174
+    WXAPI.tpjl({
+      voteId: 13,
+      token: wx.getStorageSync('token')
     }).then(function (res) {
-      var i = 0
-      for (i in res.data.result) {
-        if (res.data.result[i].teamName == that.data.competitorList[i].title) {
-          that.setData({
-            csnr: res.data.result[i].extJson['参赛内容'],
-            csnr1: res.data.result[i].extJson['头像']
-          })
-        }
-      }
-      console.log(that.data.csnr1, 'yuyueId')
+      console.log(res.data, 'tpjl')
     })
-  }
-  ,
+    WXAPI.tpcs({
+      voteId: 13
+    }).then(function (res) {
+      console.log(res.data, 'recs')
+      if (res.code === 700) {
+        slideData: 200
+      } else {
+        that.setData({
+          slideData: res.data.result.length
+        })
+      }
+
+      console.log(that.data.slideData, 'slideData')
+    })
+    WXAPI.yuyueteam({
+      yuyueId: 174,
+      pageSize: 10,
+      page: this.data.p
+    }).then(function (res) {
+
+      var newsArr = that.data.csnrr;
+      for (var i = 0; i < res.data.result.length; i++) {
+        newsArr.push(res.data.result[i])
+      }
+      that.setData({
+        csnrr: newsArr,
+        isloading: true,
+        totalpage: res.data.totalPage
+      })
+      // var i = 0
+      // for (i in res.data.result) {
+      //   console.log(res.data.result[i].extJson['头像'], 'title')
+      //   if (res.data.result[i].teamName === that.data.competitorList[i].title) {
+
+      //     var newsArr = that.data.csnrr;
+      //     for (var i = 0; i < res.data.result.length; i++) {
+      //       newsArr.push(res.data.result[i])
+      //       console.log(res.data.result[i],)
+      //     }
+      //     that.setData({
+      //       csnrr: newsArr,
+      //       isloading: true,
+      //       totalpage: res.data.totalPage
+      //     })
+      //     // that.setData({
+      //     //   csnr: res.data.result[i].extJson['参赛内容'],
+      //     //   csnr1: res.data.result[i].extJson['头像'],
+      //     //   csnrr:res.data.result
+      //     // })
+      //   }
+      // }
+      console.log(res.data.result, 'yuyueId')
+    })
+  },
+  onReady: function () {
+    // const that = this
+
+    // WXAPI.tpxq({
+    //   id: 13
+    // }).then(function (res) {
+    //   console.log(res.data, 'res')
+    //   that.setData({
+    //     competitorList: res.data.voteItems
+    //   })
+    // })
+    // // console.log(that.data.competitorList,'voteItems')
+    // WXAPI.yuyueteam({
+    //   yuyueId: 174,
+    //   pageSize:300,
+    //   page: this.data.p
+    // }).then(function (res) {
+    //   var i = 0
+    //   for (i in res.data.result) {
+    //     console.log(res.data.result[i].extJson['头像'],'title')
+    //     if (res.data.result[i].teamName === that.data.competitorList[i].title) {
+    //       var newsArr = that.data.tx;
+    //       for (var i = 0; i < res.data.result.length; i++) {
+    //         newsArr.push(res.data.result[i])
+    //       }
+    //       that.setData({
+    //         tx: newsArr,
+    //         isloading: true,
+    //         totalpage: res.data.totalPage
+    //       })
+    //       that.setData({
+    //         csnr: res.data.result[i].extJson['参赛内容'],
+    //         csnr1: res.data.result[i].extJson['头像'],
+    //         csnrr: res.data.result
+    //       })
+    //     }
+    //   }
+    //   console.log(res.data.result[i].extJson['头像'], 'yuyueId')
+    // })
+  },
   showInput: function () {
     this.setData({
       inputShowed: true
@@ -134,9 +268,9 @@ Page({
   // },
   vote(e) {
     let dataset = e.currentTarget.dataset;
-    console.log(dataset.index.voteNum);
+    console.log(dataset.index.voteNum,'vote');
     WXAPI.tpdw({
-      voteId:10,
+      voteId:13,
       items: dataset.index.id,
       token: wx.getStorageSync('token')
     }).then(function(res){
@@ -169,11 +303,18 @@ Page({
     // });
   },
   toMain:function(e) {
-    console.log(e.currentTarget.dataset.item)
+    console.log(e.currentTarget.dataset.item,'vot')
+    console.log(app.globalData.param5,'vote2')
     app.globalData.param3 = e.currentTarget.dataset.item
     wx.navigateTo({
       url: '../main/main',
     })
+  },
+  toMain1:function(e) {
+    console.log(e.currentTarget.dataset.item, 'vot1')
+    app.globalData.param6 = e.currentTarget.dataset.item.id
+    app.globalData.param5 = e.currentTarget.dataset.item.extJson['序号']
+   
   },
   // activityIntr() {
   //   wx.showModal({
@@ -182,6 +323,49 @@ Page({
   //     showCancel: false
   //   })
   // },
+
+  onReachBottom: function () {
+    wx.showLoading({
+      title: '正在加载',
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 2000)
+
+    var p = this.data.p;
+    console.log(this.data.totalpage, 'totalpage')
+    var totalpage = this.data.totalpage + 1;
+    p++;
+    if (p > totalpage) {
+      // return;
+      wx.showLoading({
+        title: '加载完毕',
+      })
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 2000)
+      return;
+    }
+    this.setData({
+      isloading: true,
+      p: p,
+      totalpage: totalpage
+    })
+    this.xk();
+    console.log(this.data.p, 'thisp')
+
+  },
+  onPullDownRefresh: function () {
+    // this.xk();
+    wx.showLoading({
+      title: "刷新中",
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 1000)
+    wx.stopPullDownRefresh();
+
+  },
   searchInput(e) {
     this.setData({
       searchVal: e.detail.value

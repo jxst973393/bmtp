@@ -39,11 +39,14 @@ Page({
     var that = this
     that.editBox = this.selectComponent("#editBox");
     that.setData({
-      competitorList: getApp().globalData.param3
+      competitorList: getApp().globalData.param3,
+      csnrr: getApp().globalData.param5,
+      teamid: getApp().globalData.param6,
     })
-
+    console.log(getApp().globalData.param6,'getApp().globalData.param3')
     WXAPI.yuyueteam({
-      yuyueId:174
+      yuyueId:174,
+      pageSize:300
     }).then(function(res){
       var i = 0 
       console.log(res.data.result[0], 'sss')
@@ -55,8 +58,17 @@ Page({
             csnr1: res.data.result[i].extJson['头像']
           })
         }
+        // console.log(res.data.result[i], 'yuyueId')
       }
-      console.log(res.data,'yuyueId')
+      
+    })
+    WXAPI.yuyueteamdy({
+      teamId: this.data.teamid,
+      token: wx.getStorageSync('token'),
+    }).then(function(res){
+      that.setData({
+        tx: res.data.userMap,
+      })
     })
     console.log(that.data.competitorList, 'competitorList')
     console.log(that.data.csnr,'csnr')
@@ -65,7 +77,7 @@ Page({
     let dataset = e.currentTarget.dataset;
     console.log(this.data.competitorList.id);
     WXAPI.tpdw({
-      voteId: 10,
+      voteId: 13,
       items: this.data.competitorList.id,
       token: wx.getStorageSync('token')
     }).then(function (res) {
@@ -74,6 +86,12 @@ Page({
         wx.showModal({
           title: "无需重复投票",
           content: "无需重复投票",
+        })
+      }
+      if (res.code === 0) {
+        wx.showModal({
+          title: "投票成功",
+          content: "您以为您心爱的队伍成功投票",
         })
       }
     })

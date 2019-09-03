@@ -282,7 +282,7 @@ Page({
   },
   onShareAppMessage: function () {
     return {
-      title: '"' + wx.getStorageSync('mallName') + '" ' + CONFIG.shareProfile,
+      title: wx.getStorageSync('mallName') + '" ' + CONFIG.shareProfile,
       path: '/pages/index/index?inviter_id=' + wx.getStorageSync('uid')
     }
     const token = wx.getStorageSync('token');

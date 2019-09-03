@@ -22,6 +22,7 @@ Page({
         version: CONFIG.version,
         vipLevel: app.globalData.vipLevel
       })
+      console.log(userInfo,'userInfo')
     }
     this.getUserApiInfo();
     this.getUserAmount();
@@ -71,6 +72,7 @@ Page({
   getUserApiInfo: function () {
     var that = this;
     WXAPI.userDetail(wx.getStorageSync('token')).then(function (res) {
+      console.log(res,'user')
       if (res.code == 0) {
         let _data = {}
         _data.apiUserInfoMap = res.data

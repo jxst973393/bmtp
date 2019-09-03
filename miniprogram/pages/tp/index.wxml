@@ -17,7 +17,27 @@
             <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
         </view>
 
-         <view class='list-main' wx:if="{{inputVal.length > 0}}" >
+        <view class='list-main' wx:if="{{inputVal.length > 0}}"  >
+      <view  wx:for="{{csnrr}}" wx:for-item="csnrr" data-item="{{csnrr}}"    wx:key="objectId" data-item="{{csnrr}}"   wx:if="{{inputVal == csnrr.teamName || inputVal == csnrr.extJson['序号']}}"   bindtap="toMain1">
+      <view wx:if="{{ competitorList.title == csnrr.teamName }}"  wx:for="{{competitorList}}" wx:for-item="competitorList"  data-item="{{competitorList}}" bindtap="toMain">
+        <view class='list-item left'>
+          <view class='img-box' >
+            <imgBox src='{{csnrr.extJson["头像"]}}'></imgBox>
+          </view>
+          <view class='item-info fs-small' >
+            <text class='item-number left'>{{csnrr.extJson["序号"]}}</text>
+            <text class='item-name ellipsis'>{{csnrr.teamName}}</text>
+            <view class='item-ballot fc-red' >
+              <!-- <text class='iconfont icon-navicon-cptptj'></text>{{competitorList.voteNum}}票 -->
+              </view>
+          </view>
+          <!-- <view class='item-vote right {{competitorList.voteNum ? "voted":""}}' data-isvote='{{competitorList.voteNum}}' data-index='{{competitorList}}' bindtap='vote'>{{!competitorList.voteNum ? "投票":"已投票"}}</view> -->
+        </view>
+      </view>
+      </view>
+    </view>
+
+         <!-- <view class='list-main' wx:if="{{inputVal.length > 0}}" >
       <view  wx:for="{{competitorList}}" wx:for-item="competitorList" wx:key="objectId" data-item="{{competitorList}}"  wx:if="{{inputVal == competitorList.id || inputVal == competitorList.title}}"   bindtap='toMain'>
         <view class='list-item left'>
           <view class='img-box' wx:for-item="{{csnr1}}"   wx:key='csnr1' data-item="{{csnr1}}" >
@@ -32,7 +52,7 @@
           <view class='item-vote right {{competitorList.voteNum ? "voted":""}}' data-isvote='{{competitorList.voteNum}}' data-index='{{competitorList}}' bindtap='vote'>{{!competitorList.voteNum ? "投票":"已投票"}}</view>
         </view>
       </view>
-    </view>
+    </view> -->
 <view class='gray-content fc-black '  hidden="{{inputShowed}}">
   <!-- <topNotice text='恭喜XXX获得本次活动的擂主~！' bgcolor='#373b41'></topNotice> -->
   <view class='vote-top'>
@@ -48,15 +68,15 @@
     <view class='info fs-large'  >
       <view class='tb-inline'>
         <text class='top'>报名人数</text>
-        <text class='bottom'>{{slideData.result.length + 100}}</text>
+        <text class='bottom'>{{slideData + 100}}</text>
       </view>
       <view class='tb-inline'>
         <text class='top'>累计投票</text>
-        <text class='bottom'>{{slideData.result.length + 30}}</text>
+        <text class='bottom'>{{slideData}}</text>
       </view>
       <view class='tb-inline'>
         <text class='top'>访问量</text>
-        <text class='bottom fc-red'>{{slideData.result.length + 200}}</text>
+        <text class='bottom fc-red'>{{slideData + 216}}</text>
       </view>
     </view>
     <view class='deadline fs-large'>
@@ -91,7 +111,7 @@
       </view>
     </view> -->
     
-    <view class='list-main' >
+    <!-- <view class='list-main' >
       <view  wx:for="{{competitorList}}" wx:for-item="competitorList" wx:key="objectId" data-item="{{competitorList}}"  bindtap='toMain'>
         <view class='list-item left'>
           <view class='img-box' wx:for-item="{{csnr1}}"   wx:key='csnr1' data-item="{{csnr1}}" >
@@ -106,9 +126,30 @@
           <view class='item-vote right {{competitorList.voteNum ? "voted":""}}' data-isvote='{{competitorList.voteNum}}' data-index='{{competitorList}}' bindtap='vote'>{{!competitorList.voteNum ? "投票":"已投票"}}</view>
         </view>
       </view>
+    </view> -->
+    <view class='list-main'  >
+      <view  wx:for="{{csnrr}}" wx:for-item="csnrr" data-item="{{csnrr}}"  bindtap="toMain1">
+      <view  wx:if="{{ csnrr.teamName == competitorList.title}}"  wx:for="{{competitorList}}" wx:for-item="competitorList" wx:key="objectId" data-item="{{competitorList}}" bindtap="toMain">
+        <view class='list-item left'>
+          <view class='img-box' >
+            <imgBox src='{{csnrr.extJson["头像"]}}'></imgBox>
+          </view>
+          <view class='item-info fs-small' >
+            <text class='item-number left'>{{csnrr.extJson["序号"]}}</text>
+            <text class='item-name ellipsis'>{{csnrr.teamName}}</text>
+            <view class='item-ballot fc-red' >
+              <text class='iconfont icon-navicon-cptptj'></text>{{competitorList.voteNum}}票
+              </view>
+          </view>
+          <view class='item-vote right {{competitorList.voteNum ? "voted":""}}' data-isvote='{{competitorList.voteNum}}' data-index='{{competitorList}}' bindtap='vote'>{{!competitorList.voteNum ? "投票":"已投票"}}</view>
+        </view>
+      </view>
+      </view>
     </view>
-    <view class='list-notice notice'>——所有选手已显示完毕——</view>
+    <view class='list-notice notice' >——所有选手已显示完毕——</view>
   <!-- </view> -->
 </view>
 
 
+
+ 
